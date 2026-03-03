@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head><title>Test Page - Infinite Loading</title></head>
+<body>
+<h1>Loading..</h1>
+<button onclick="alert(Math.random())">JavaScript can still run</button>
+<script>
+document.writeln(
+  '<img src="https://httpbin.org/delay/10?q=' + Math.random() + '" style="display:none">'
+);
+setInterval(() => {
+  const img = document.createElement('img');
+  img.src = 'https://httpbin.org/delay/10?q=' + Math.random();
+  img.style.display = 'none';
+  document.body.appendChild(img);
+}, 5000);
+window.onload = function() {
+  document.body.innerText = 'Loaded';
+};
+</script>
+</body>
+</html>
